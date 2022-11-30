@@ -1,22 +1,44 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import donutImage from '../assets/donutImage.png';
 
-export class Cook {
-  name;
-  cost = 1000;
-  donutRate = 5;
-
-  constructor() {
-    this.name = 'Cook';
+export class DonutValues {
+  constructor(storeName,cost,donutRate) {
+    this.storeName = storeName;
+    this.cost = cost;
+    this.donutRate = donutRate;
   }
-}
+
+};
+ class Cook extends DonutValues{
+  constructor(storeName,cost,donutRate) {
+    super(storeName,cost,donutRate)
+      this.StoreName = 'Cook';
+      this.cost = 10
+      this.donutRate = 1
+  }
+};
+
+  class Baker extends DonutValues{
+    constructor(storeName,cost,donutRate) {
+      super(storeName,cost,donutRate)
+        this.StoreName = 'Baker';
+        this.cost = 15
+        this.donutRate = 5
+  }
+ }
+
 
 export default function Donut() {
   const [donuts, setDonuts] = useState(0);
   const [totalRate, setTotalRate] = useState(0);
   const [buildings, setBuildings] = useState([]);
-
+  const [cookCount, setCookCount] = useState(0);
+  const [bakerCount, setBakerCount] = useState(0);
+  
+    
+     
+   
   // console.log(buildings);
   console.log(totalRate);
 
@@ -45,11 +67,29 @@ export default function Donut() {
       rateIncrease = totalRateArray[rate];
     }
     setTotalRate((oldRate) => oldRate + rateIncrease);
+    setCookCount((cookCount) => cookCount++);
+    
   }, [buildings]);
+
+  //resets all values to 0 
+  function resetAll(){
+    setDonuts(0);
+    setTotalRate(0);
+    setBuildings([]);
+    setCookCount(0);
+    setBakerCount(0);
+
+  }
+
+  
 
   return (
     <>
       <Typography variant='h1'>{donuts}</Typography>
+      <Typography variant='p1'>Donuts {totalRate} /sec</Typography><br />
+      <Typography variant='p1'>Cooks hired: {cookCount} </Typography><br />
+      <Typography variant='p1'>Bakers hired: {bakerCount} </Typography><br />
+
       <Box
         component='img'
         sx={{
@@ -68,27 +108,40 @@ export default function Donut() {
         src={donutImage}
         onClick={() => setDonuts((prevState) => prevState + 1)}
       ></Box>
+      <Box
+        m={1}
+        //margin
+        display="flex"
+        justifyContent="flex-start"
+        alignItems="flex-end"
+      >
+
       <Button
+        id ="Cook"
         disabled={donuts < new Cook().cost}
         variant='contained'
         onClick={() =>
-          setBuildings((oldBuildings) => [...oldBuildings, new Cook()])
+          {setCookCount((prevState) => prevState + 1); setBuildings((oldBuildings) => [...oldBuildings, new Cook()])}
         }
       >
-        Add Building
+        Cook <br /> Cost = 10 <br />Donuts = 1/sec
+
       </Button>
-      <Button variant='contained' onClick={() => setDonuts(0)}>
+      
+       <Button
+        disabled={donuts < new Baker().cost}
+        variant='contained'
+        onClick={() =>
+          {setBakerCount((prevState) => prevState + 1);setBuildings((oldBuildings) => [...oldBuildings, new Baker()] )}
+          
+        }
+      >
+        Baker <br />Cost = 15 <br />Donuts = 5/sec
+      </Button> 
+      <Button variant='contained' onClick={() => resetAll()}>
         Reset
       </Button>
-      <Button
-        variant='contained'
-        onClick={() => {
-          setTotalRate(0);
-          setBuildings([]);
-        }}
-      >
-        Reset Buildings
-      </Button>
+      </Box>
     </>
   );
 }
