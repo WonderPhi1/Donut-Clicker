@@ -17,6 +17,9 @@ const StoreButton = (type, cost, total, isDisabled, canBuy) => {
           opacity: [0.9, 0.8, 0.7],
           cursor: 'pointer',
         },
+        '&:active': {
+          transform: 'scale(0.95)',
+        },
       }}
     >
       <Stack direction='row' spacing={2} justifyContent='space-between'>

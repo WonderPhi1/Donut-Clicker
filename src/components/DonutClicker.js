@@ -67,28 +67,35 @@ const DonutClicker = () => {
         <Typography variant='h1'>{donuts}</Typography>
         <Typography variant='h6'>Donuts per second {totalRate}</Typography>
         <Box
-          component='img'
           sx={{
-            width: 400,
-            height: 400,
-            animation: 'spin 15s linear infinite',
             '&:hover': {
               cursor: 'pointer',
-              transform: 'scale(2)',
+              transform: 'scale(1.05)',
             },
-            '&:active': {},
-            '@keyframes spin': {
-              '0%': {
-                transform: 'rotate(360deg)',
-              },
-              '100%': {
-                transform: 'rotate(0deg)',
-              },
+            '&:active': {
+              transform: 'scale(0.95)',
             },
           }}
-          src={donutImage}
-          onClick={() => setDonuts((prevState) => prevState + 1)}
-        />
+        >
+          <Box
+            component='img'
+            sx={{
+              width: 400,
+              height: 400,
+              animation: 'spin 15s linear infinite',
+              '@keyframes spin': {
+                '0%': {
+                  transform: 'rotate(360deg)',
+                },
+                '100%': {
+                  transform: 'rotate(0deg)',
+                },
+              },
+            }}
+            src={donutImage}
+            onClick={() => setDonuts((prevState) => prevState + 1)}
+          />
+        </Box>
       </Stack>
       {/* <Button
         variant='contained'
