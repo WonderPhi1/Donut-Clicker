@@ -52,7 +52,6 @@ const StoreButtonGroup = () => {
       <StoreButton />
       <StoreButton />
       <StoreButton />
-      <StoreButton />
     </Stack>
   );
 };
