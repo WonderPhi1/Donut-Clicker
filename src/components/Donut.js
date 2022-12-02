@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import donutImage from '../assets/donutImage.png';
 
@@ -35,12 +35,12 @@ export default function Donut() {
   const [buildings, setBuildings] = useState([]);
   const [cookCount, setCookCount] = useState(0);
   const [bakerCount, setBakerCount] = useState(0);
-  const [lifetimeDonuts, setLifetimeDonuts] = useState(0); 
   const [donutsSpent, setDonutsSpent] = useState(0);
+
   
-   
   // console.log(buildings);
   console.log(totalRate);
+ 
 
   useEffect(() => {
     const id = setInterval(
@@ -94,7 +94,7 @@ export default function Donut() {
     setCookCount(0);
     setBakerCount(0);
     setDonutsSpent(0);
-    setLifetimeDonuts(0);
+    //setLifetimeDonuts(0);
 
   }
 
@@ -104,11 +104,11 @@ export default function Donut() {
   return (
     <>
       <Typography variant='h1' id="dcount">{donuts}</Typography>
-      <Typography variant='p1'>Donuts {totalRate} /sec</Typography><br />
+      <Typography variant='p1' >Donuts {totalRate} /sec</Typography><br />
       <Typography variant='p1'>Cooks hired: {cookCount} </Typography><br />
       <Typography variant='p1'>Bakers hired: {bakerCount} </Typography><br />
       <Typography variant='p1' id="dspent">Lifetime donuts spent: {donutsSpent} </Typography><br />
-      {/* <Typography variant='p1'>Lifetime donuts earned: {lifetimeDonuts} </Typography><br /> */}
+       <Typography variant='p1'>Lifetime donuts earned: {(donuts +donutsSpent)} </Typography><br /> 
 
       <Box
         component='img'
