@@ -27,7 +27,7 @@ export class Toes extends Buildings{
             this.buildingCost = 10;
             this.buff = 2;
             this.costIncreaseRate = 0.15;
-            this.maxCost = 999;
+            this.maxCost = 1200;
            
            
     }
@@ -35,7 +35,7 @@ export class Toes extends Buildings{
         increaseBuildingCost(){
             if(this.buildingCost < this.maxCost){
                 super.increaseBuildingCost()
-            }
+            }else{this.buildingCost = this.maxCost }
            
             
         } 
