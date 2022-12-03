@@ -1,31 +1,35 @@
-import { useState, useEffect } from 'react';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 import DonutClicker from './components/DonutClicker';
-import { Box, Button, Typography } from '@mui/material';
-import Donut from './classes/Donut';
-import {Buildings, Toes,UnpaidIntern,Cook,Grandpa,Farm,Rig,Bank,Church,Bezos} from './classes/Buildings';
+import Background from './assets/background.jpg';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FED706',
+    },
+    secondary: {
+      main: '#67294E',
+    },
+  },
+});
 
 const App = () => {
-  let myDonut = new Donut('phils donut shop');
-  let myToes = new Toes()
-  let myBank = new Bank()
-  const [donuts, setDonuts] = useState();
-
-  useEffect(() => {
-    setDonuts(myDonut.donuts);
-  }, [myDonut]);
-
   return (
-    <>
-      <h1>test</h1>
-      {/* <Typography>{donuts.donuts}</Typography>*/}
-      <Typography>{myDonut.gameName}</Typography> 
-      
-      <Button onClick={() => console.log(myToes)}>Add Donut</Button>
-      
-      <Button onClick={() => {myToes.increaseBuildingCost(); console.log(myToes)}}> Buy Toes</Button>
-      <Button onClick={() => {myBank.increaseBuildingCost(); console.log(myBank)}}> Buy Bank</Button>
-      {/* <DonutClicker /> */}
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box
+        sx={{
+          backgroundImage: `url(${Background})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          height: '100vh',
+          border: `5px outset ${theme.palette.primary.main}`,
+        }}
+      >
+        <DonutClicker />
+      </Box>
+    </ThemeProvider>
   );
 };
 
