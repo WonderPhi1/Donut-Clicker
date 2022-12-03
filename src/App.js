@@ -7,6 +7,7 @@ import {Buildings, Toes,UnpaidIntern,Cook,Grandpa,Farm,Rig,Bank,Church,Bezos} fr
 const App = () => {
   let myDonut = new Donut('phils donut shop');
   let myToes = new Toes()
+  let myBank = new Bank()
   const [donuts, setDonuts] = useState();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const App = () => {
       <Button onClick={() => console.log(myToes)}>Add Donut</Button>
       
       <Button onClick={() => {myToes.increaseBuildingCost(); console.log(myToes)}}> Buy Toes</Button>
+      <Button onClick={() => {myBank.increaseBuildingCost(); console.log(myBank)}}> Buy Bank</Button>
       {/* <DonutClicker /> */}
     </>
   );

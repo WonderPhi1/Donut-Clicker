@@ -27,14 +27,21 @@ export class Toes extends Buildings{
             this.buildingCost = 10;
             this.buff = 2;
             this.costIncreaseRate = 0.15;
+            this.maxCost = 999;
            
            
     }
     
-    increaseBuildingCost(){
-        super.increaseBuildingCost()
-    } 
-}
+        increaseBuildingCost(){
+            if(this.buildingCost < this.maxCost){
+                super.increaseBuildingCost()
+            }
+           
+            
+        } 
+    }
+    
+
 
 export class UnpaidIntern extends Buildings{
     constructor(donutRate,buildingCost,buff){
