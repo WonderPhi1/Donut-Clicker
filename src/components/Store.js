@@ -13,7 +13,9 @@ const Store = () => {
   return (
     <Box width='20%'>
       <Stack direction='column' alignItems={'center'}>
-        <Typography>Store</Typography>
+        <Typography variant='h6' color={'primary'}>
+          Store
+        </Typography>
         <Box width='100%'>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 0, borderColor: 'divider' }}>

@@ -1,8 +1,24 @@
 import React from 'react';
 import { Box, Stack, Divider, Typography, Button } from '@mui/material';
 import ToeImage from '../assets/toe.png';
+import InternImage from '../assets/intern.png';
+import CookImage from '../assets/cook.png';
+import GrandpaImage from '../assets/grandpa.png';
+import FarmImage from '../assets/farm.png';
+import BankImage from '../assets/bank.png';
+import ChurchImage from '../assets/church.png';
+import RigImage from '../assets/rig.png';
+import BeezosImage from '../assets/beezos.png';
 
-const StoreButton = ({ building, cost, total, isDisabled, canBuy }) => {
+const StoreButton = ({
+  building,
+  cost,
+  total,
+  isDisabled,
+  canBuy,
+  icon,
+  type,
+}) => {
   return (
     <Box
       sx={{
@@ -23,18 +39,25 @@ const StoreButton = ({ building, cost, total, isDisabled, canBuy }) => {
       }}
     >
       <Stack direction='row' spacing={2} justifyContent='space-between'>
-        <Box component={'img'} width='60px' height='60px' src={ToeImage} />
-        <Stack direction='column'>
-          <Typography variant='h5' color={'#fff'}>
-            {building}
-          </Typography>
-          <Typography variant='p' color={'#66FF65'}>
-            50
+        <Box component={'img'} width='60px' height='60px' src={icon} />
+        <Stack
+          width={'100%'}
+          direction='row'
+          alignItems='center'
+          justifyContent='space-between'
+        >
+          <Stack direction='column'>
+            <Typography variant='h5' color={'#fff'}>
+              {building}
+            </Typography>
+            <Typography variant='p' color={type === 'buy' ? '#66FF65' : 'red'}>
+              50
+            </Typography>
+          </Stack>
+          <Typography variant='h4' color={'#58564C'}>
+            10
           </Typography>
         </Stack>
-        <Typography variant='h4' color={'#58564C'}>
-          10
-        </Typography>
       </Stack>
     </Box>
   );
@@ -43,15 +66,15 @@ const StoreButton = ({ building, cost, total, isDisabled, canBuy }) => {
 const StoreButtonGroup = ({ type }) => {
   return (
     <Stack direction='column'>
-      <StoreButton building='Toe' />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
-      <StoreButton />
+      <StoreButton building='Toe' icon={ToeImage} type={type} />
+      <StoreButton building='Unpaid Intern' icon={InternImage} type={type} />
+      <StoreButton building='Cook' icon={CookImage} type={type} />
+      <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />
+      <StoreButton building='Farm' icon={FarmImage} type={type} />
+      <StoreButton building='Bank' icon={BankImage} type={type} />
+      <StoreButton building='Church' icon={ChurchImage} type={type} />
+      <StoreButton building='Rig' icon={RigImage} type={type} />
+      <StoreButton building='Beezos' icon={BeezosImage} type={type} />
     </Stack>
   );
 };
