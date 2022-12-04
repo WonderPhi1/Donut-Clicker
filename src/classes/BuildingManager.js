@@ -8,6 +8,13 @@ export default class BuildingManager {
     this._gameState = gameState;
     this._totalToes = gameState.toeInfo.totalToes;
     this._totalIntern = gameState.internInfo.totalInterns;
+    this._totalCook = gameState.cookInfo.totalCooks;
+    this._totalGranpa = gameState.grandpaInfo.totalGrandpas;
+    this._totalFarm = gameState.farmInfo.totalFarms;
+    this._totalRig = gameState.rigInfo.totalRigs;
+    this._totalBank = gameState.bankInfo.totalBanks;
+    this._totalChurch = gameState.churchInfo.totalChurches;
+    this._bezosInfo = gameState.bezosInfo.totalBezos;
     this._gameController = gameStateController;
   }
 

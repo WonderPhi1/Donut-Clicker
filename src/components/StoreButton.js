@@ -80,7 +80,14 @@ const StoreButtonGroup = ({ type, game }) => {
     }
 
     if (type === 'sell') {
-      //do stuff
+      if (buildingType == 'Toe') {
+        game.totalToes = -1;
+      } else if (buildingType == 'Unpaid Intern') {
+        game.totalIntern = -1;
+      }
+
+      game.donutGame.donuts = base.buildingCost;
+      base.decreaseBuildingCost();
     }
   };
 
@@ -93,7 +100,10 @@ const StoreButtonGroup = ({ type, game }) => {
         baseBuilding={game.gameState.baseBuildings.toe}
         buildingTotal={game.totalToes}
         isDisabled={
-          game.donutGame.donuts < game.gameState.baseBuildings.toe.buildingCost
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.toe.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalToes === 0)
             ? true
             : false
         }
@@ -113,8 +123,10 @@ const StoreButtonGroup = ({ type, game }) => {
         baseBuilding={game.gameState.baseBuildings.unpaidIntern}
         buildingTotal={game.totalIntern}
         isDisabled={
-          game.donutGame.donuts <
-          game.gameState.baseBuildings.unpaidIntern.buildingCost
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.unpaidIntern.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalIntern === 0)
             ? true
             : false
         }

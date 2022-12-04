@@ -32,6 +32,12 @@ export class Buildings {
     this._buildingCost = Math.round(newCost);
   }
 
+  decreaseBuildingCost() {
+    let newCost = (1 - this._costIncreaseRate) * this._buildingCost;
+    console.log(newCost);
+    this._buildingCost = Math.ceil(newCost);
+  }
+
   applyBuildingBuff() {
     let newRate = this._donutRate * this.buff;
     this._donutRate = Math.round(newRate);
@@ -52,6 +58,7 @@ export class UnpaidIntern extends Buildings {
     super(donutRate, buildingCost, buff);
     this._donutRate = 8;
     this._buildingCost = 100;
+    this._buff = 1.02;
   }
 }
 
@@ -60,10 +67,7 @@ export class Cook extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 47;
     this.buildingCost = 1100;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 1.04;
   }
 }
 
@@ -72,10 +76,7 @@ export class Grandpa extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 47;
     this.buildingCost = 12000;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 1.1;
   }
 }
 
@@ -84,10 +85,7 @@ export class Farm extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 260;
     this.buildingCost = 130000;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 1.2;
   }
 }
 
@@ -96,10 +94,7 @@ export class Rig extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 1400;
     this.buildingCost = 1400000;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 1.3;
   }
 }
 
@@ -108,6 +103,7 @@ export class Bank extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 7800;
     this.buildingCost = 20000000;
+    this._buff = 1.5;
   }
 
   increaseBuildingCost() {
@@ -121,10 +117,6 @@ export class Church extends Buildings {
     this.donutRate = 44000;
     this.buildingCost = 330000000;
   }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
-  }
 }
 
 export class Bezos extends Buildings {
@@ -132,9 +124,6 @@ export class Bezos extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 1600000;
     this.buildingCost = 75000000000;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 2;
   }
 }

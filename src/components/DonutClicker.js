@@ -8,7 +8,17 @@ import BuildingManager from '../classes/BuildingManager';
 import Display from './Display';
 import Stats from './Stats';
 import Store from './Store';
-import { Toe, UnpaidIntern } from '../classes/Buildings';
+import {
+  Bank,
+  Church,
+  Bezos,
+  Cook,
+  Farm,
+  Grandpa,
+  Rig,
+  Toe,
+  UnpaidIntern,
+} from '../classes/Buildings';
 
 const state = {
   donutInfo: {
@@ -21,9 +31,38 @@ const state = {
   internInfo: {
     totalInterns: 0,
   },
+  cookInfo: {
+    totalCooks: 0,
+  },
+  grandpaInfo: {
+    totalGrandpas: 0,
+  },
+  farmInfo: {
+    totalFarms: 0,
+  },
+  rigInfo: {
+    totalRigs: 0,
+  },
+  bankInfo: {
+    totalBanks: 0,
+  },
+  churchInfo: {
+    totalChurches: 0,
+  },
+  bezosInfo: {
+    totalBezos: 0,
+  },
+
   baseBuildings: {
     toe: new Toe(),
     unpaidIntern: new UnpaidIntern(),
+    cook: new Cook(),
+    grandpa: new Grandpa(),
+    farm: new Farm(),
+    rig: new Rig(),
+    bank: new Bank(),
+    church: new Church(),
+    beezos: new Bezos(),
   },
 };
 
