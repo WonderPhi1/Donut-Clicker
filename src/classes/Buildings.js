@@ -41,8 +41,9 @@ export class Buildings {
 export class Toe extends Buildings {
   constructor(buildingCost, donutRate, buff) {
     super(buildingCost, donutRate, buff);
-    this._donutRate = 0.1;
-    this._buildingCost = 15;
+    this._name ="Toe"
+    this._donutRate = 1;
+    this._buildingCost = 10;
     this._buff = 1.01;
   }
 }
