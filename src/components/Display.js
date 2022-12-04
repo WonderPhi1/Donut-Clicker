@@ -3,7 +3,7 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import DonutImage from '../assets/donutImage.png';
 import Background from '../assets/background.jpg';
-const DonutSpin = () => {
+const DonutSpin = ({ game }) => {
   return (
     <Stack
       direction={'row'}
@@ -34,13 +34,13 @@ const DonutSpin = () => {
           },
         }}
         src={DonutImage}
-        // onClick={() => setDonuts((prevState) => prevState + 1)}
+        onClick={() => game.clickDonut()}
       />
     </Stack>
   );
 };
 
-const Display = ({ gameName, donuts, donutRate }) => {
+const Display = ({ game }) => {
   const theme = useTheme();
   return (
     <Stack
@@ -52,19 +52,19 @@ const Display = ({ gameName, donuts, donutRate }) => {
       sx={{ borderRight: `10px groove ${theme.palette.primary.main}` }}
     >
       <Box sx={{ p: 2, bgcolor: '#000', opacity: '0.5' }}>
-        <Typography align='center' color='white'>
-          Game Name
+        <Typography variant='h5' align='center' color='white'>
+          {game.gameName}
         </Typography>
       </Box>
       <Stack sx={{ p: 3, bgcolor: '#000', opacity: '0.5' }} spacing={3}>
-        <Typography align='center' color='white'>
-          donuts
+        <Typography variant='h5' align='center' color='white'>
+          {game.donuts}
         </Typography>
-        <Typography align='center' color='white'>
+        <Typography variant='h6' align='center' color='white'>
           rate
         </Typography>
       </Stack>
-      <DonutSpin />;
+      <DonutSpin game={game} />;
     </Stack>
   );
 };

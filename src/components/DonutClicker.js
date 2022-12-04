@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Stack, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+// Classes
+import Donut from '../classes/Donut';
 // Components
 import Display from './Display';
 import Stats from './Stats';
 import Store from './Store';
 
 const DonutClicker = () => {
+  // hooks
   const theme = useTheme();
+  // state
+  const [donuts, setDonuts] = useState(0);
+  // classes
+  const newDonut = new Donut(donuts, setDonuts);
+
   return (
     <Stack
       direction={'row'}
@@ -18,7 +26,7 @@ const DonutClicker = () => {
         height: '100%',
       }}
     >
-      <Display />
+      <Display game={newDonut} />
       <Stats />
       <Store />
     </Stack>

@@ -1,33 +1,32 @@
 export default class Donut {
-  gameName;
-  donuts;
-  donutsClicked;
-
-  constructor(gameName) {
-    this.gameName = gameName;
-    this.donuts = 0;
-    this.donutsClicked = 0;
+  constructor(donuts, setDonuts) {
+    this._gameName = 'Donut Clicker';
+    this._donuts = donuts;
+    this._donutsClicked = 0;
+    this._donutController = setDonuts;
   }
 
-  // // getters
-  // get gameName() {
-  //   return this.gameName;
-  // }
+  // getters
+  get gameName() {
+    return this._gameName;
+  }
 
-  // get donuts() {
-  //   return this.donuts;
-  // }
+  get donuts() {
+    return this._donuts;
+  }
 
-  // // setters
-  // set gameName(name) {
-  //   this.gameName = name;
-  // }
+  // setters
+  set gameName(name) {
+    this._gameName = name;
+  }
 
-  // set donuts(donuts) {
-  //   this.donuts = donuts;
-  // }
+  set donuts(donuts) {
+    this._donutController((oldDonuts) => oldDonuts + donuts);
+  }
 
   clickDonut() {
-    this.donuts += 1;
+    console.log('clicked');
+    this.donuts(10);
+    this._donutsClicked += 1;
   }
 }
