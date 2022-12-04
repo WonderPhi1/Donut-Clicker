@@ -34,7 +34,7 @@ const DonutSpin = ({ game }) => {
           },
         }}
         src={DonutImage}
-        onClick={() => game.clickDonut()}
+        onClick={() => game.donutGame.clickDonut()}
       />
     </Stack>
   );
@@ -42,6 +42,7 @@ const DonutSpin = ({ game }) => {
 
 const Display = ({ game }) => {
   const theme = useTheme();
+
   return (
     <Stack
       width={'50%'}
@@ -52,16 +53,16 @@ const Display = ({ game }) => {
       sx={{ borderRight: `10px groove ${theme.palette.primary.main}` }}
     >
       <Box sx={{ p: 2, bgcolor: '#000', opacity: '0.5' }}>
-        <Typography variant='h5' align='center' color='white'>
-          {game.gameName}
+        <Typography variant='h6' align='center' color='white'>
+          {game.donutGame.gameName}
         </Typography>
       </Box>
       <Stack sx={{ p: 3, bgcolor: '#000', opacity: '0.5' }} spacing={3}>
         <Typography variant='h5' align='center' color='white'>
-          {game.donuts}
+          {game.donutGame.donuts} Cookies
         </Typography>
-        <Typography variant='h6' align='center' color='white'>
-          rate
+        <Typography variant='p' align='center' color='white'>
+          per second: rate
         </Typography>
       </Stack>
       <DonutSpin game={game} />;

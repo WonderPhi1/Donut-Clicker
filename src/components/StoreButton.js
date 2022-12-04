@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Stack, Divider, Typography, Button } from '@mui/material';
 import ToeImage from '../assets/toe.png';
 import InternImage from '../assets/intern.png';
@@ -9,6 +9,7 @@ import BankImage from '../assets/bank.png';
 import ChurchImage from '../assets/church.png';
 import RigImage from '../assets/rig.png';
 import BeezosImage from '../assets/beezos.png';
+import { Toe } from '../classes/Buildings';
 
 const StoreButton = ({
   building,
@@ -18,9 +19,12 @@ const StoreButton = ({
   canBuy,
   icon,
   type,
+  onClick,
+  baseBuilding,
 }) => {
   return (
     <Box
+      onClick={onClick}
       sx={{
         bgcolor: '#9F998D',
         boxShadow: 1,
@@ -51,11 +55,11 @@ const StoreButton = ({
               {building}
             </Typography>
             <Typography variant='p' color={type === 'buy' ? '#66FF65' : 'red'}>
-              50
+              {baseBuilding.buildingCost}
             </Typography>
           </Stack>
           <Typography variant='h4' color={'#58564C'}>
-            10
+            {10}
           </Typography>
         </Stack>
       </Stack>
@@ -63,18 +67,33 @@ const StoreButton = ({
   );
 };
 
-const StoreButtonGroup = ({ type }) => {
+const StoreButtonGroup = ({ type, game }) => {
+  const [baseToe] = useState(new Toe());
+
+  const newBuildingHandler = (base, building) => {
+    game.addBuilding(building);
+    base.increaseBuildingCost();
+  };
+
   return (
     <Stack direction='column'>
-      <StoreButton building='Toe' icon={ToeImage} type={type} />
-      <StoreButton building='Unpaid Intern' icon={InternImage} type={type} />
+      <StoreButton
+        building='Toe'
+        icon={ToeImage}
+        type={type}
+        baseBuilding={baseToe}
+        onClick={() => {
+          newBuildingHandler(baseToe, new Toe());
+        }}
+      />
+      {/* <StoreButton building='Unpaid Intern' icon={InternImage} type={type} />
       <StoreButton building='Cook' icon={CookImage} type={type} />
       <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />
       <StoreButton building='Farm' icon={FarmImage} type={type} />
       <StoreButton building='Bank' icon={BankImage} type={type} />
       <StoreButton building='Church' icon={ChurchImage} type={type} />
       <StoreButton building='Rig' icon={RigImage} type={type} />
-      <StoreButton building='Beezos' icon={BeezosImage} type={type} />
+      <StoreButton building='Beezos' icon={BeezosImage} type={type} /> */}
     </Stack>
   );
 };

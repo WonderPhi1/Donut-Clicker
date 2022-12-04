@@ -3,6 +3,7 @@ import { Stack, Divider } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 // Classes
 import Donut from '../classes/Donut';
+import BuildingManager from '../classes/BuildingManager';
 // Components
 import Display from './Display';
 import Stats from './Stats';
@@ -14,7 +15,7 @@ const DonutClicker = () => {
   // state
   const [donuts, setDonuts] = useState(0);
   // classes
-  const newDonut = new Donut(donuts, setDonuts);
+  const game = new BuildingManager(new Donut(donuts, setDonuts));
 
   return (
     <Stack
@@ -26,9 +27,9 @@ const DonutClicker = () => {
         height: '100%',
       }}
     >
-      <Display game={newDonut} />
+      <Display game={game} />
       <Stats />
-      <Store />
+      <Store game={game} />
     </Stack>
   );
 };

@@ -1,3 +1,5 @@
+import BuildingManager from './BuildingManager';
+
 export default class Donut {
   constructor(donuts, setDonuts) {
     this._gameName = 'Donut Clicker';
@@ -15,6 +17,10 @@ export default class Donut {
     return this._donuts;
   }
 
+  get donutsClicked() {
+    return this._donutsClicked;
+  }
+
   // setters
   set gameName(name) {
     this._gameName = name;
@@ -24,9 +30,12 @@ export default class Donut {
     this._donutController((oldDonuts) => oldDonuts + donuts);
   }
 
+  set donutsClicked(donuts) {
+    this._donutsClicked = donuts;
+  }
+
   clickDonut() {
-    console.log('clicked');
-    this.donuts(10);
-    this._donutsClicked += 1;
+    this.donuts = 1;
+    this.donutsClicked = 1;
   }
 }

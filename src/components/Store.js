@@ -3,7 +3,7 @@ import { Tab, Box, Typography, Stack } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import StoreButtonGroup from './StoreButton';
 
-const Store = () => {
+const Store = ({ game }) => {
   const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
@@ -28,10 +28,10 @@ const Store = () => {
               </TabList>
             </Box>
             <TabPanel sx={{ p: 0 }} value='1'>
-              <StoreButtonGroup type='buy' />
+              <StoreButtonGroup type='buy' game={game} />
             </TabPanel>
             <TabPanel sx={{ p: 0 }} value='2'>
-              <StoreButtonGroup type='sell' />
+              <StoreButtonGroup type='sell' game={game} />
             </TabPanel>
           </TabContext>
         </Box>

@@ -11,6 +11,7 @@ function Stats() {
         color: '#fff',
         bgcolor: '#000',
         borderRight: `10px groove ${theme.palette.primary.main}`,
+        opacity: '0.90',
       }}
     >
       Stats
