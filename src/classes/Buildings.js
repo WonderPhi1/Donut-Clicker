@@ -50,7 +50,7 @@ export class Toe extends Buildings {
 export class UnpaidIntern extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this._donutRate = 1;
+    this._donutRate = 8;
     this._buildingCost = 100;
   }
 }
@@ -58,8 +58,8 @@ export class UnpaidIntern extends Buildings {
 export class Cook extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 3;
-    this.buildingCost = 20;
+    this.donutRate = 47;
+    this.buildingCost = 1100;
   }
 
   increaseBuildingCost() {
@@ -70,8 +70,8 @@ export class Cook extends Buildings {
 export class Grandpa extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 4;
-    this.buildingCost = 25;
+    this.donutRate = 47;
+    this.buildingCost = 12000;
   }
 
   increaseBuildingCost() {
@@ -82,8 +82,8 @@ export class Grandpa extends Buildings {
 export class Farm extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 5;
-    this.buildingCost = 30;
+    this.donutRate = 260;
+    this.buildingCost = 130000;
   }
 
   increaseBuildingCost() {
@@ -94,8 +94,8 @@ export class Farm extends Buildings {
 export class Rig extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 6;
-    this.buildingCost = 35;
+    this.donutRate = 1400;
+    this.buildingCost = 1400000;
   }
 
   increaseBuildingCost() {
@@ -106,8 +106,8 @@ export class Rig extends Buildings {
 export class Bank extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 7;
-    this.buildingCost = 40;
+    this.donutRate = 7800;
+    this.buildingCost = 20000000;
   }
 
   increaseBuildingCost() {
@@ -118,8 +118,8 @@ export class Bank extends Buildings {
 export class Church extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 8;
-    this.buildingCost = 45;
+    this.donutRate = 44000;
+    this.buildingCost = 330000000;
   }
 
   increaseBuildingCost() {

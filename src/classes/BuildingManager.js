@@ -2,7 +2,7 @@ import { Toe, UnpaidIntern } from './Buildings';
 
 export default class BuildingManager {
   constructor(donut, gameState, gameStateController) {
-    this._totalRate = 0;
+    this._totalRate = gameState.donutInfo.rate;
     this._buildings = [];
     this._donutGame = donut;
     this._gameState = gameState;
@@ -38,7 +38,13 @@ export default class BuildingManager {
 
   // setters
   set totalRate(rate) {
-    this._totalRate = rate;
+    this._gameController((prevState) => ({
+      ...prevState,
+      donutInfo: {
+        ...prevState.donutInfo,
+        rate: prevState.donutInfo.rate + rate,
+      },
+    }));
   }
 
   set buildings(newBuildings) {
@@ -65,25 +71,10 @@ export default class BuildingManager {
     }));
   }
 
-  calcTotalRate() {}
+  calcTotalRate(newBuilding) {
+    console.log('Calculating total rate');
 
-  //https://stackoverflow.com/questions/71242296/get-specific-elements-of-a-map-in-javascript
-  mapGetField(map, field) {
-    let results = [];
-    for (let value of map.values()) {
-      results.push(value[field]);
-    }
-    return results;
-  }
-
-  calcTotalRate() {
-    let totalRateArray = this.mapGetField(this.buildings, '_donutRate');
-    let sum = 0;
-
-    for (let i = 0; i < totalRateArray.length; i++) {
-      sum += totalRateArray[i];
-    }
-    console.log(this._buildings.length);
+    this.totalRate = newBuilding.donutRate;
   }
 
   calcTotalofNumberOfaBuilding(instanceType, buildingType) {
@@ -105,5 +96,7 @@ export default class BuildingManager {
     this._buildings.push(building);
     console.log('New Building Added');
     this.calcTotalofNumberOfaBuilding(instanceType, buildingType);
+    console.log('Adding to total rate');
+    this.calcTotalRate(building);
   }
 }

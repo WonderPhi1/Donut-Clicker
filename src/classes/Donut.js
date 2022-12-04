@@ -27,7 +27,6 @@ export default class Donut {
   }
 
   set donuts(donuts) {
-    console.log('Setting total donuts');
     this._controller((prevState) => ({
       ...prevState,
       donutInfo: {

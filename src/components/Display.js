@@ -59,10 +59,10 @@ const Display = ({ game }) => {
       </Box>
       <Stack sx={{ p: 3, bgcolor: '#000', opacity: '0.5' }} spacing={3}>
         <Typography variant='h5' align='center' color='white'>
-          {game.donutGame.donuts} Cookies
+          {game.donutGame.donuts} Donuts
         </Typography>
         <Typography variant='p' align='center' color='white'>
-          per second: rate
+          per second: {game.totalRate}
         </Typography>
       </Stack>
       <DonutSpin game={game} />;

@@ -13,6 +13,7 @@ import { Toe, UnpaidIntern } from '../classes/Buildings';
 const state = {
   donutInfo: {
     donuts: 0,
+    rate: 0,
   },
   toeInfo: {
     totalToes: 0,
@@ -27,8 +28,6 @@ const state = {
 };
 
 const DonutClicker = () => {
-  // hooks
-  const theme = useTheme();
   // state
   const [gameState, setGameState] = useState(state);
   // classes
@@ -37,6 +36,18 @@ const DonutClicker = () => {
     gameState,
     setGameState,
   );
+
+  // Updates the total donuts every second the total rate
+  useEffect(() => {
+    const timer = setInterval(
+      () => (game.donutGame.donuts = game.totalRate),
+      1000,
+    );
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [game]);
 
   return (
     <Stack
