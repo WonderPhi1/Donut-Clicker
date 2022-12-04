@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
 
-function Stats(game) {
+function Stats({ game }) {
   const theme = useTheme();
 
   return (
@@ -16,14 +16,7 @@ function Stats(game) {
       }}
     >
       Stats
-      <Typography>Total Toes:  {}</Typography>
-      <button onClick={() => {
-          game.calcTotalToes();
-          
-         
-         
-          
-        }}></button>
+      <Typography>Total Toes: {game.totalToes}</Typography>
     </Box>
   );
 }
