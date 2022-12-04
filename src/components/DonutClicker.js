@@ -15,11 +15,14 @@ const DonutClicker = () => {
   // state
   const [donuts, setDonuts] = useState(0);
   const [totalToes, setTotalToes] = useState(0);
+  const [totalIntern, setTotalIntern] = useState(0);
   // classes
   const game = new BuildingManager(
     new Donut(donuts, setDonuts),
     setTotalToes,
     totalToes,
+    setTotalIntern,
+    totalIntern,
   );
 
   return (

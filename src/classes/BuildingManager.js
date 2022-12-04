@@ -1,12 +1,14 @@
-import { Toe } from './Buildings';
+import { Toe } from "./Buildings";
 
 export default class BuildingManager {
-  constructor(donut, setTotalToes, totalToes) {
+  constructor(donut,setTotalToes,totalToes,setTotalIntern,totalIntern) {
     this._totalRate = 0;
     this._buildings = [];
     this._donutGame = donut;
     this._totalToes = totalToes;
     this._setTotalToes = setTotalToes;
+    this._totalIntern =totalIntern;
+    this._setTotalIntern =setTotalIntern;
   }
 
   // getters
@@ -26,6 +28,10 @@ export default class BuildingManager {
     return this._totalToes;
   }
 
+  get totalIntern() {
+    return this._totalIntern;
+  }
+
   // setters
   set totalRate(rate) {
     this._totalRate = rate;
@@ -39,40 +45,53 @@ export default class BuildingManager {
     this._setTotalToes((oldToes) => oldToes + toes);
   }
 
+  set totalIntern(intern) {
+    this._setTotalIntern((oldIntern) => oldIntern + intern);
+  }
+
   calcTotalRate() {}
 
   addBuilding(building) {
     this._buildings.push(building);
-    console.log(building);
+    console.log(building)
   }
 
   //https://stackoverflow.com/questions/71242296/get-specific-elements-of-a-map-in-javascript
   mapGetField(map, field) {
     let results = [];
     for (let value of map.values()) {
-      results.push(value[field]);
+        results.push(value[field]);
     }
     return results;
+    
   }
 
-  calcTotalRate() {
-    let totalRateArray = this.mapGetField(this._buildings, '_donutRate');
+  calcTotalRate(){
+    let totalRateArray = this.mapGetField(this.buildings,"_donutRate" )
     let sum = 0;
-    for (let i = 0; i < totalRateArray.length; i++) {
+   
+    for (let i = 0; i <totalRateArray.length; i++){
       sum += totalRateArray[i];
     }
-    console.log('rate' + sum);
-  }
+    console.log(this._buildings.length)
+    
 
-  calcTotalToes() {
-    let totalToesArray = this.mapGetField(this._buildings, '_name');
-    let sum = 0;
-    for (let i = 0; i < this.buildings.length; i++) {
-      if (totalToesArray[i] === 'Toe') {
-        sum += 1;
+
+
+  }
+  calcTotalofEachBuilding(name){
+    let sum =0
+    sum += 1;
+    if(name =='Toe'){
+      this.totalToes = sum; 
       }
-    }
-
-    this.totalToes = sum;
+    else if(name =='Unpaid Intern'){
+      this.totalIntern = sum;
+    }  
   }
+
 }
+
+
+  
+

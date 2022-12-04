@@ -17,6 +17,7 @@ function Stats({ game }) {
     >
       Stats
       <Typography>Total Toes: {game.totalToes}</Typography>
+      <Typography>Total Interns: {game.totalIntern}</Typography>
     </Box>
   );
 }
