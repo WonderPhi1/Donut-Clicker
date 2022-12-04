@@ -74,6 +74,8 @@ const StoreButtonGroup = ({ type, game }) => {
   const newBuildingHandler = (base, building) => {
     game.addBuilding(building);
     base.increaseBuildingCost();
+    //game.calcTotalToes();
+    //game.calcTotalRate();
     
   };
 
@@ -86,7 +88,8 @@ const StoreButtonGroup = ({ type, game }) => {
         baseBuilding={baseToe}
         onClick={() => {
           newBuildingHandler(baseToe, new Toe());
-          game.calcTotalRate();
+          
+          
         }}
       />
       <StoreButton 
@@ -96,7 +99,10 @@ const StoreButtonGroup = ({ type, game }) => {
         baseBuilding={baseIntern}
         onClick={() => {
           newBuildingHandler(baseIntern, new UnpaidIntern());
-          game.calcTotalRate();
+          
+         
+         
+          
         }} />
       {/* <StoreButton building='Cook' icon={CookImage} type={type} />
       <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />

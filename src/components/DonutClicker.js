@@ -14,8 +14,9 @@ const DonutClicker = () => {
   const theme = useTheme();
   // state
   const [donuts, setDonuts] = useState(0);
+  const [totalToes, setTotalToes] = useState(0)
   // classes
-  const game = new BuildingManager(new Donut(donuts, setDonuts));
+  const game = new BuildingManager(new Donut(donuts, setDonuts),setTotalToes,totalToes);
 
   return (
     <Stack
@@ -28,7 +29,7 @@ const DonutClicker = () => {
       }}
     >
       <Display game={game} />
-      <Stats />
+      <Stats game={game}/>
       <Store game={game} />
     </Stack>
   );
