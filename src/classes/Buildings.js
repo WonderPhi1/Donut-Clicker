@@ -4,7 +4,6 @@ export class Buildings {
     this._buildingCost = 0;
     this._costIncreaseRate = 0.15;
     this._buff = 0;
-   
   }
 
   // getters
@@ -43,7 +42,7 @@ export class Toe extends Buildings {
   constructor(buildingCost, donutRate, buff) {
     super(buildingCost, donutRate, buff);
     this._donutRate = 1;
-    this._buildingCost = 10;
+    this._buildingCost = 15;
     this._buff = 1.01;
   }
 }
@@ -51,12 +50,8 @@ export class Toe extends Buildings {
 export class UnpaidIntern extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 2;
-    this.buildingCost = 15;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._donutRate = 1;
+    this._buildingCost = 100;
   }
 }
 

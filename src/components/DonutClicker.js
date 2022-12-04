@@ -8,21 +8,34 @@ import BuildingManager from '../classes/BuildingManager';
 import Display from './Display';
 import Stats from './Stats';
 import Store from './Store';
+import { Toe, UnpaidIntern } from '../classes/Buildings';
+
+const state = {
+  donutInfo: {
+    donuts: 0,
+  },
+  toeInfo: {
+    totalToes: 0,
+  },
+  internInfo: {
+    totalInterns: 0,
+  },
+  baseBuildings: {
+    toe: new Toe(),
+    unpaidIntern: new UnpaidIntern(),
+  },
+};
 
 const DonutClicker = () => {
   // hooks
   const theme = useTheme();
   // state
-  const [donuts, setDonuts] = useState(0);
-  const [totalToes, setTotalToes] = useState(0);
-  const [totalIntern, setTotalIntern] = useState(0);
+  const [gameState, setGameState] = useState(state);
   // classes
   const game = new BuildingManager(
-    new Donut(donuts, setDonuts),
-    setTotalToes,
-    totalToes,
-    setTotalIntern,
-    totalIntern,
+    new Donut(gameState.donutInfo.donuts, setGameState),
+    gameState,
+    setGameState,
   );
 
   return (
