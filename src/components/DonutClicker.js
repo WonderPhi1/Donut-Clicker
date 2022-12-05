@@ -8,14 +8,85 @@ import BuildingManager from '../classes/BuildingManager';
 import Display from './Display';
 import Stats from './Stats';
 import Store from './Store';
+import {
+  Bank,
+  Church,
+  Bezos,
+  Cook,
+  Farm,
+  Grandpa,
+  Rig,
+  Toe,
+  UnpaidIntern,
+} from '../classes/Buildings';
+
+const state = {
+  donutInfo: {
+    donuts: 0,
+    rate: 0,
+  },
+  toeInfo: {
+    totalToes: 0,
+  },
+  internInfo: {
+    totalInterns: 0,
+  },
+  cookInfo: {
+    totalCooks: 0,
+  },
+  grandpaInfo: {
+    totalGrandpas: 0,
+  },
+  farmInfo: {
+    totalFarms: 0,
+  },
+  rigInfo: {
+    totalRigs: 0,
+  },
+  bankInfo: {
+    totalBanks: 0,
+  },
+  churchInfo: {
+    totalChurches: 0,
+  },
+  bezosInfo: {
+    totalBezos: 0,
+  },
+
+  baseBuildings: {
+    toe: new Toe(),
+    unpaidIntern: new UnpaidIntern(),
+    cook: new Cook(),
+    grandpa: new Grandpa(),
+    farm: new Farm(),
+    rig: new Rig(),
+    bank: new Bank(),
+    church: new Church(),
+    beezos: new Bezos(),
+  },
+};
 
 const DonutClicker = () => {
-  // hooks
-  const theme = useTheme();
   // state
-  const [donuts, setDonuts] = useState(0);
+  const [gameState, setGameState] = useState(state);
   // classes
-  const game = new BuildingManager(new Donut(donuts, setDonuts));
+  const game = new BuildingManager(
+    new Donut(gameState.donutInfo.donuts, setGameState),
+    gameState,
+    setGameState,
+  );
+
+  // Updates the total donuts every second the total rate
+  useEffect(() => {
+    const timer = setInterval(
+      () => (game.donutGame.donuts = game.totalRate),
+      1000,
+    );
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [game]);
 
   return (
     <Stack
@@ -28,7 +99,7 @@ const DonutClicker = () => {
       }}
     >
       <Display game={game} />
-      <Stats />
+      <Stats game={game} />
       <Store game={game} />
     </Stack>
   );

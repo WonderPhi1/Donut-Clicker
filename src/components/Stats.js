@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
 
-function Stats() {
+function Stats({ game }) {
   const theme = useTheme();
+
   return (
     <Box
       width='30%'
@@ -15,6 +16,8 @@ function Stats() {
       }}
     >
       Stats
+      <Typography>Total Toes: {game.totalToes}</Typography>
+      <Typography>Total Interns: {game.totalIntern}</Typography>
     </Box>
   );
 }

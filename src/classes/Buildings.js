@@ -32,6 +32,12 @@ export class Buildings {
     this._buildingCost = Math.round(newCost);
   }
 
+  decreaseBuildingCost() {
+    let newCost = (1 - this._costIncreaseRate) * this._buildingCost;
+    console.log(newCost);
+    this._buildingCost = Math.ceil(newCost);
+  }
+
   applyBuildingBuff() {
     let newRate = this._donutRate * this.buff;
     this._donutRate = Math.round(newRate);
@@ -41,7 +47,7 @@ export class Buildings {
 export class Toe extends Buildings {
   constructor(buildingCost, donutRate, buff) {
     super(buildingCost, donutRate, buff);
-    this._donutRate = 0.1;
+    this._donutRate = 1;
     this._buildingCost = 15;
     this._buff = 1.01;
   }
@@ -50,68 +56,54 @@ export class Toe extends Buildings {
 export class UnpaidIntern extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 2;
-    this.buildingCost = 15;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._donutRate = 8;
+    this._buildingCost = 100;
+    this._buff = 1.02;
   }
 }
 
 export class Cook extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 3;
-    this.buildingCost = 20;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this.donutRate = 47;
+    this.buildingCost = 1100;
+    this._buff = 1.04;
   }
 }
 
 export class Grandpa extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 4;
-    this.buildingCost = 25;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this.donutRate = 47;
+    this.buildingCost = 12000;
+    this._buff = 1.1;
   }
 }
 
 export class Farm extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 5;
-    this.buildingCost = 30;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this.donutRate = 260;
+    this.buildingCost = 130000;
+    this._buff = 1.2;
   }
 }
 
 export class Rig extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 6;
-    this.buildingCost = 35;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this.donutRate = 1400;
+    this.buildingCost = 1400000;
+    this._buff = 1.3;
   }
 }
 
 export class Bank extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 7;
-    this.buildingCost = 40;
+    this.donutRate = 7800;
+    this.buildingCost = 20000000;
+    this._buff = 1.5;
   }
 
   increaseBuildingCost() {
@@ -122,12 +114,8 @@ export class Bank extends Buildings {
 export class Church extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
-    this.donutRate = 8;
-    this.buildingCost = 45;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this.donutRate = 44000;
+    this.buildingCost = 330000000;
   }
 }
 
@@ -136,9 +124,6 @@ export class Bezos extends Buildings {
     super(donutRate, buildingCost, buff);
     this.donutRate = 1600000;
     this.buildingCost = 75000000000;
-  }
-
-  increaseBuildingCost() {
-    super.increaseBuildingCost();
+    this._buff = 2;
   }
 }

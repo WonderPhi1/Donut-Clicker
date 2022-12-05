@@ -9,24 +9,32 @@ import BankImage from '../assets/bank.png';
 import ChurchImage from '../assets/church.png';
 import RigImage from '../assets/rig.png';
 import BeezosImage from '../assets/beezos.png';
-import { Toe } from '../classes/Buildings';
+import {
+  Bank,
+  Church,
+  Bezos,
+  Cook,
+  Farm,
+  Grandpa,
+  Rig,
+  Toe,
+  UnpaidIntern,
+} from '../classes/Buildings';
 
 const StoreButton = ({
   building,
-  cost,
-  total,
   isDisabled,
-  canBuy,
   icon,
   type,
   onClick,
   baseBuilding,
+  buildingTotal,
 }) => {
   return (
     <Box
-      onClick={onClick}
+      onClick={!isDisabled ? onClick : null}
       sx={{
-        bgcolor: '#9F998D',
+        bgcolor: !isDisabled ? '#9F998D' : '#5F6461',
         boxShadow: 1,
         border: '5px outset #87826E',
         p: 2,
@@ -51,15 +59,21 @@ const StoreButton = ({
           justifyContent='space-between'
         >
           <Stack direction='column'>
-            <Typography variant='h5' color={'#fff'}>
+            <Typography
+              variant='subtitle1'
+              color={!isDisabled ? '#fff' : '#A1ABB4'}
+            >
               {building}
             </Typography>
-            <Typography variant='p' color={type === 'buy' ? '#66FF65' : 'red'}>
+            <Typography
+              variant='subtitle2'
+              color={type === 'buy' && !isDisabled ? '#66FF65' : '#A4545B'}
+            >
               {baseBuilding.buildingCost}
             </Typography>
           </Stack>
           <Typography variant='h4' color={'#58564C'}>
-            {10}
+            {buildingTotal}
           </Typography>
         </Stack>
       </Stack>
@@ -68,11 +82,42 @@ const StoreButton = ({
 };
 
 const StoreButtonGroup = ({ type, game }) => {
-  const [baseToe] = useState(new Toe());
+  const buildingHandler = (base, building, instanceType, buildingType) => {
+    if (type === 'buy') {
+      game.addBuilding(building, instanceType, buildingType);
+      game.donutGame.donuts = -base.buildingCost;
+      base.increaseBuildingCost();
+    }
 
-  const newBuildingHandler = (base, building) => {
-    game.addBuilding(building);
-    base.increaseBuildingCost();
+    if (type === 'sell') {
+      switch (buildingType) {
+        case 'Toe':
+          game.totalToes = -1;
+          break;
+        case 'Unpaid Intern':
+          game.totalIntern = -1;
+          break;
+        case 'Cook':
+          game.totalCooks = -1;
+        case 'Grandpa':
+          game.totalGrandpas = -1;
+        case 'Farm':
+          game.totalFarms = -1;
+        case 'Rig':
+          game.totalRigs = -1;
+        case 'Bank':
+          game.totalBanks = -1;
+        case 'Church':
+          game.totalChurches = -1;
+        case 'Bezos':
+          game.totalBezos = -1;
+        default:
+        // do nothing
+      }
+      game.totalRate = -base.donutRate;
+      game.donutGame.donuts = base.buildingCost;
+      base.decreaseBuildingCost();
+    }
   };
 
   return (
@@ -81,14 +126,72 @@ const StoreButtonGroup = ({ type, game }) => {
         building='Toe'
         icon={ToeImage}
         type={type}
-        baseBuilding={baseToe}
+        baseBuilding={game.gameState.baseBuildings.toe}
+        buildingTotal={game.totalToes}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.toe.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalToes === 0)
+            ? true
+            : false
+        }
         onClick={() => {
-          newBuildingHandler(baseToe, new Toe());
+          buildingHandler(
+            game.gameState.baseBuildings.toe,
+            new Toe(),
+            Toe,
+            'Toe',
+          );
         }}
       />
-      {/* <StoreButton building='Unpaid Intern' icon={InternImage} type={type} />
-      <StoreButton building='Cook' icon={CookImage} type={type} />
-      <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />
+      <StoreButton
+        building='Unpaid Intern'
+        icon={InternImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.unpaidIntern}
+        buildingTotal={game.totalIntern}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.unpaidIntern.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalIntern === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          buildingHandler(
+            game.gameState.baseBuildings.unpaidIntern,
+            new UnpaidIntern(),
+            UnpaidIntern,
+            'Unpaid Intern',
+          );
+        }}
+      />
+      <StoreButton
+        building='Cook'
+        icon={CookImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.cook}
+        buildingTotal={game.totalCooks}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.cook.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalCooks === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          buildingHandler(
+            game.gameState.baseBuildings.cook,
+            new Cook(),
+            Cook,
+            'Cook',
+          );
+        }}
+      />
+      {/* <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />
       <StoreButton building='Farm' icon={FarmImage} type={type} />
       <StoreButton building='Bank' icon={BankImage} type={type} />
       <StoreButton building='Church' icon={ChurchImage} type={type} />

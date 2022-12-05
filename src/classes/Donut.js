@@ -1,11 +1,11 @@
 import BuildingManager from './BuildingManager';
 
 export default class Donut {
-  constructor(donuts, setDonuts) {
+  constructor(donuts, gameStateController) {
     this._gameName = 'Donut Clicker';
     this._donuts = donuts;
     this._donutsClicked = 0;
-    this._donutController = setDonuts;
+    this._controller = gameStateController;
   }
 
   // getters
@@ -27,7 +27,13 @@ export default class Donut {
   }
 
   set donuts(donuts) {
-    this._donutController((oldDonuts) => oldDonuts + donuts);
+    this._controller((prevState) => ({
+      ...prevState,
+      donutInfo: {
+        ...prevState.donutInfo,
+        donuts: prevState.donutInfo.donuts + donuts,
+      },
+    }));
   }
 
   set donutsClicked(donuts) {
