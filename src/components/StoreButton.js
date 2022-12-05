@@ -300,7 +300,7 @@ const StoreButtonGroup = ({ type, game }) => {
         buildingTotal={game.totalRigs}
         isDisabled={
           (game.donutGame.donuts <
-            game.gameState.baseBuildings.rig.totalRigs &&
+            game.gameState.baseBuildings.rig.buildingCost &&
             type !== 'sell') ||
           (type === 'sell' && game.totalRigs === 0)
             ? true
@@ -309,7 +309,7 @@ const StoreButtonGroup = ({ type, game }) => {
         onClick={() => {
           
           buildingHandler(
-            game.gameState.baseBuildings.rigs,
+            game.gameState.baseBuildings.rig,
             new Rig(),
             Rig,
             'Rig',
@@ -323,7 +323,7 @@ const StoreButtonGroup = ({ type, game }) => {
         buildingTotal={game.totalBezos}
         isDisabled={
           (game.donutGame.donuts <
-            game.gameState.baseBuildings.rig.totalBezos &&
+            game.gameState.baseBuildings.beezos.buildingCost &&
             type !== 'sell') ||
           (type === 'sell' && game.totalBezos === 0)
             ? true
