@@ -22,35 +22,45 @@ import {
 
 const state = {
   donutInfo: {
-    donuts: 0,
+    donuts: 1000,
     rate: 0,
+    donutsClicked: 0,
   },
   toeInfo: {
     totalToes: 0,
+    combinedToesRates: 0,
   },
   internInfo: {
     totalInterns: 0,
+    combinedInternRates: 0,
   },
   cookInfo: {
     totalCooks: 0,
+    combinedCookRates: 0,
   },
   grandpaInfo: {
     totalGrandpas: 0,
+    combinedGrandpaRates: 0,
   },
   farmInfo: {
     totalFarms: 0,
+    combinedFarmRates: 0,
   },
   rigInfo: {
     totalRigs: 0,
+    combinedRigRates: 0,
   },
   bankInfo: {
     totalBanks: 0,
+    combinedBankRates: 0,
   },
   churchInfo: {
     totalChurches: 0,
+    combinedChurchRates: 0,
   },
   bezosInfo: {
     totalBezos: 0,
+    combinedBezoRate: 0,
   },
   totalBuildingInfo: {
     totalOfAllBuildings: 0,

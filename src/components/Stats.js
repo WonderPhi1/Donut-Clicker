@@ -15,17 +15,19 @@ function Stats({ game }) {
         opacity: '0.90',
       }}
     >
-      Stats
-      <Typography>Total Toes: {game.totalToes}</Typography>
-      <Typography>Total Interns: {game.totalIntern}</Typography>
-      <Typography>Total Cooks: {game.totalCooks}</Typography>
-      <Typography>Total Grandpas: {game.totalGranpas}</Typography>
-      <Typography>Total Farms: {game.totalFarms}</Typography>
-      <Typography>Total Rigs: {game.totalRigs}</Typography>
-      <Typography>Total Banks: {game.totalBanks}</Typography>
-      <Typography>Total Church: {game.totalChurches}</Typography>
-      <Typography>Total Bezos: {game.totalBezos}</Typography>
-      <Typography>Total Buildings: {game.totalOfAllBuildings}</Typography> 
+     Welcome to Donut Clicker
+      
+      <Typography>  Toe Rate: {game.combinedToesRates} 🍩/sec </Typography>
+       <Typography> Interns Rate: {game.combinedInternRates} 🍩/sec</Typography>
+       <Typography> Cooks Rate: {game.combinedCookRates} 🍩/sec</Typography>
+       <Typography> Grandpas Rate: {game.combinedGrandpaRates} 🍩/sec</Typography>
+       <Typography> Farms Rate: {game.combinedFarmRates} 🍩/sec</Typography>
+       <Typography> Rigs Rate: {game.combinedRigRates} 🍩/sec</Typography>
+       <Typography> Banks Rate: {game.combinedBankRates} 🍩/sec</Typography>
+       <Typography> Church Rate: {game.combinedChurchRates} 🍩/sec</Typography>
+       <Typography> Bezos Rate: {game.combinedBezoRate} 🍩/sec</Typography>
+       <Typography> Buildings Owned: {game.totalOfAllBuildings}</Typography>  
+        
     </Box>
   );
 }

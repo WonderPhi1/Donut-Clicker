@@ -4,7 +4,7 @@ export default class Donut {
   constructor(donuts, gameStateController) {
     this._gameName = 'Donut Clicker';
     this._donuts = donuts;
-    this._donutsClicked = 0;
+    //this._donutsClicked = gameState.donutInfo.donutsClicked;
     this._controller = gameStateController;
   }
 
@@ -37,11 +37,18 @@ export default class Donut {
   }
 
   set donutsClicked(donuts) {
-    this._donutsClicked = donuts;
+    this._controller((prevState) => ({
+      ...prevState,
+      donutInfo: {
+        ...prevState.donutInfo,
+        donutsClicked: prevState.donutInfo.donutsClicked + donuts,
+      },
+    }));
   }
 
   clickDonut() {
     this.donuts = 1;
-    this.donutsClicked = 1;
+    //this.donutsClicked =+ 1;
+    console.log(this.donutsClicked)
   }
 }
