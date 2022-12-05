@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { Box, Stack, Divider, Typography, Button } from '@mui/material';
+import {
+  Box,
+  Stack,
+  Divider,
+  Typography,
+  Button,
+  Tooltip,
+} from '@mui/material';
 import ToeImage from '../assets/toe.png';
 import InternImage from '../assets/intern.png';
 import CookImage from '../assets/cook.png';
@@ -50,33 +57,38 @@ const StoreButton = ({
         },
       }}
     >
-      <Stack direction='row' spacing={2} justifyContent='space-between'>
-        <Box component={'img'} width='60px' height='60px' src={icon} />
-        <Stack
-          width={'100%'}
-          direction='row'
-          alignItems='center'
-          justifyContent='space-between'
-        >
-          <Stack direction='column'>
-            <Typography
-              variant='subtitle1'
-              color={!isDisabled ? '#fff' : '#A1ABB4'}
-            >
-              {building}
-            </Typography>
-            <Typography
-              variant='subtitle2'
-              color={type === 'buy' && !isDisabled ? '#66FF65' : '#A4545B'}
-            >
-              {baseBuilding.buildingCost}
+      <Tooltip
+        title={`Each ${building} produces ${baseBuilding.donutRate} donuts per second.`}
+        placement='left'
+      >
+        <Stack direction='row' spacing={2} justifyContent='space-between'>
+          <Box component={'img'} width='60px' height='60px' src={icon} />
+          <Stack
+            width={'100%'}
+            direction='row'
+            alignItems='center'
+            justifyContent='space-between'
+          >
+            <Stack direction='column'>
+              <Typography
+                variant='subtitle1'
+                color={!isDisabled ? '#fff' : '#A1ABB4'}
+              >
+                {building}
+              </Typography>
+              <Typography
+                variant='subtitle2'
+                color={type === 'buy' && !isDisabled ? '#66FF65' : '#A4545B'}
+              >
+                {baseBuilding.buildingCost}
+              </Typography>
+            </Stack>
+            <Typography variant='h4' color={'#58564C'}>
+              {buildingTotal}
             </Typography>
           </Stack>
-          <Typography variant='h4' color={'#58564C'}>
-            {buildingTotal}
-          </Typography>
         </Stack>
-      </Stack>
+      </Tooltip>
     </Box>
   );
 };
@@ -121,7 +133,7 @@ const StoreButtonGroup = ({ type, game }) => {
         default:
         // do nothing
       }
-      game.totalOfAllBuildings =-1 
+      game.totalOfAllBuildings = -1;
       game.totalRate = -base.donutRate;
       game.donutGame.donuts = base.buildingCost;
       base.decreaseBuildingCost();
@@ -191,7 +203,6 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.cook,
             new Cook(),
@@ -200,11 +211,11 @@ const StoreButtonGroup = ({ type, game }) => {
           );
         }}
       />
-       <StoreButton 
-       building='Grandpa' 
-       icon={GrandpaImage} 
-       type={type}
-       baseBuilding={game.gameState.baseBuildings.grandpa}
+      <StoreButton
+        building='Grandpa'
+        icon={GrandpaImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.grandpa}
         buildingTotal={game.totalGrandpas}
         isDisabled={
           (game.donutGame.donuts <
@@ -215,19 +226,19 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.grandpa,
             new Grandpa(),
             Grandpa,
             'Grandpa',
           );
-        }} />
-      <StoreButton 
-      building='Farm' 
-      icon={FarmImage} 
-      type={type}
-      baseBuilding={game.gameState.baseBuildings.farm}
+        }}
+      />
+      <StoreButton
+        building='Farm'
+        icon={FarmImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.farm}
         buildingTotal={game.totalFarms}
         isDisabled={
           (game.donutGame.donuts <
@@ -238,19 +249,19 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.farm,
             new Farm(),
             Farm,
             'Farm',
           );
-        }} />
-      <StoreButton 
-      building='Bank' 
-      icon={BankImage} 
-      type={type}
-      baseBuilding={game.gameState.baseBuildings.bank}
+        }}
+      />
+      <StoreButton
+        building='Bank'
+        icon={BankImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.bank}
         buildingTotal={game.totalBanks}
         isDisabled={
           (game.donutGame.donuts <
@@ -261,19 +272,19 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.bank,
             new Bank(),
             Bank,
             'Bank',
           );
-        }} />
-      <StoreButton 
-      building='Church' 
-      icon={ChurchImage} 
-      type={type}
-      baseBuilding={game.gameState.baseBuildings.church}
+        }}
+      />
+      <StoreButton
+        building='Church'
+        icon={ChurchImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.church}
         buildingTotal={game.totalChurches}
         isDisabled={
           (game.donutGame.donuts <
@@ -284,19 +295,19 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.church,
             new Church(),
             Church,
             'Church',
           );
-        }} />
-      <StoreButton 
-      building='Rig' 
-      icon={RigImage} 
-      type={type}
-      baseBuilding={game.gameState.baseBuildings.rig}
+        }}
+      />
+      <StoreButton
+        building='Rig'
+        icon={RigImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.rig}
         buildingTotal={game.totalRigs}
         isDisabled={
           (game.donutGame.donuts <
@@ -307,19 +318,19 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.rig,
             new Rig(),
             Rig,
             'Rig',
           );
-        }} />
-      <StoreButton 
-      building='Beezos' 
-      icon={BeezosImage} 
-      type={type}
-      baseBuilding={game.gameState.baseBuildings.beezos}
+        }}
+      />
+      <StoreButton
+        building='Beezos'
+        icon={BeezosImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.beezos}
         buildingTotal={game.totalBezos}
         isDisabled={
           (game.donutGame.donuts <
@@ -330,14 +341,14 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
-          
           buildingHandler(
             game.gameState.baseBuildings.beezos,
             new Bezos(),
             Bezos,
             'Beezos',
           );
-        }} /> 
+        }}
+      />
     </Stack>
   );
 };
