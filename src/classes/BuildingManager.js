@@ -112,7 +112,7 @@ export default class BuildingManager {
 
   }
   
-  set totalCook(cook) {
+  set totalCooks(cook) {
     this._gameController((prevState) => ({
       ...prevState,
       cookInfo: {

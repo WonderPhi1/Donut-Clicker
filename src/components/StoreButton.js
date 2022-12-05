@@ -99,21 +99,29 @@ const StoreButtonGroup = ({ type, game }) => {
           break;
         case 'Cook':
           game.totalCooks = -1;
+          break;
         case 'Grandpa':
           game.totalGrandpas = -1;
+          break;
         case 'Farm':
           game.totalFarms = -1;
+          break;
         case 'Rig':
           game.totalRigs = -1;
+          break;
         case 'Bank':
           game.totalBanks = -1;
+          break;
         case 'Church':
           game.totalChurches = -1;
-        case 'Bezos':
+          break;
+        case 'Beezos':
           game.totalBezos = -1;
+          break;
         default:
         // do nothing
       }
+      game.totalOfAllBuildings =-1 
       game.totalRate = -base.donutRate;
       game.donutGame.donuts = base.buildingCost;
       base.decreaseBuildingCost();
@@ -183,6 +191,7 @@ const StoreButtonGroup = ({ type, game }) => {
             : false
         }
         onClick={() => {
+          
           buildingHandler(
             game.gameState.baseBuildings.cook,
             new Cook(),
@@ -191,12 +200,144 @@ const StoreButtonGroup = ({ type, game }) => {
           );
         }}
       />
-      {/* <StoreButton building='Grandpa' icon={GrandpaImage} type={type} />
-      <StoreButton building='Farm' icon={FarmImage} type={type} />
-      <StoreButton building='Bank' icon={BankImage} type={type} />
-      <StoreButton building='Church' icon={ChurchImage} type={type} />
-      <StoreButton building='Rig' icon={RigImage} type={type} />
-      <StoreButton building='Beezos' icon={BeezosImage} type={type} /> */}
+       <StoreButton 
+       building='Grandpa' 
+       icon={GrandpaImage} 
+       type={type}
+       baseBuilding={game.gameState.baseBuildings.grandpa}
+        buildingTotal={game.totalGrandpas}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.grandpa.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalGrandpas === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.grandpa,
+            new Grandpa(),
+            Grandpa,
+            'Grandpa',
+          );
+        }} />
+      <StoreButton 
+      building='Farm' 
+      icon={FarmImage} 
+      type={type}
+      baseBuilding={game.gameState.baseBuildings.farm}
+        buildingTotal={game.totalFarms}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.farm.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalFarms === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.farm,
+            new Farm(),
+            Farm,
+            'Farm',
+          );
+        }} />
+      <StoreButton 
+      building='Bank' 
+      icon={BankImage} 
+      type={type}
+      baseBuilding={game.gameState.baseBuildings.bank}
+        buildingTotal={game.totalBanks}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.bank.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalBanks === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.bank,
+            new Bank(),
+            Bank,
+            'Bank',
+          );
+        }} />
+      <StoreButton 
+      building='Church' 
+      icon={ChurchImage} 
+      type={type}
+      baseBuilding={game.gameState.baseBuildings.church}
+        buildingTotal={game.totalChurches}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.church.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalChurches === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.church,
+            new Church(),
+            Church,
+            'Church',
+          );
+        }} />
+      <StoreButton 
+      building='Rig' 
+      icon={RigImage} 
+      type={type}
+      baseBuilding={game.gameState.baseBuildings.rig}
+        buildingTotal={game.totalRigs}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.rig.totalRigs &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalRigs === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.rigs,
+            new Rig(),
+            Rig,
+            'Rig',
+          );
+        }} />
+      <StoreButton 
+      building='Beezos' 
+      icon={BeezosImage} 
+      type={type}
+      baseBuilding={game.gameState.baseBuildings.beezos}
+        buildingTotal={game.totalBezos}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.rig.totalBezos &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalBezos === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          
+          buildingHandler(
+            game.gameState.baseBuildings.beezos,
+            new Bezos(),
+            Bezos,
+            'Beezos',
+          );
+        }} /> 
     </Stack>
   );
 };
