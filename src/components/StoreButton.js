@@ -103,49 +103,47 @@ const StoreButtonGroup = ({ type, game }) => {
     }
 
     if (type === 'sell') {
-     
       switch (buildingType) {
         case 'Toe':
           game.totalToes = -1;
-          game.combinedToesRates =- new Toe().donutRate;
+          game.combinedToesRates = -new Toe().donutRate;
           break;
         case 'Unpaid Intern':
           game.totalIntern = -1;
-          game.combinedInternRates =- new UnpaidIntern().donutRate;
+          game.combinedInternRates = -new UnpaidIntern().donutRate;
           break;
         case 'Cook':
           game.totalCooks = -1;
-          game.combinedCookRates =- new Cook().donutRate;
+          game.combinedCookRates = -new Cook().donutRate;
           break;
         case 'Grandpa':
           game.totalGrandpas = -1;
-          game.combinedGrandpaRates =- new Grandpa().donutRate;
+          game.combinedGrandpaRates = -new Grandpa().donutRate;
           break;
         case 'Farm':
           game.totalFarms = -1;
-          game.combinedFarmRates =- new Farm().donutRate;
+          game.combinedFarmRates = -new Farm().donutRate;
           break;
         case 'Rig':
           game.totalRigs = -1;
-          game.combinedRigRates =- new Rig().donutRate;
+          game.combinedRigRates = -new Rig().donutRate;
           break;
         case 'Bank':
           game.totalBanks = -1;
-          game.combinedBankRates =- new Bank().donutRate;
+          game.combinedBankRates = -new Bank().donutRate;
           break;
         case 'Church':
           game.totalChurches = -1;
-          game.combinedChurchRates =- new Church().donutRate;
+          game.combinedChurchRates = -new Church().donutRate;
           break;
         case 'Beezos':
           game.totalBezos = -1;
-          game.combinedBezoRate =- new Bezos().donutRate;
+          game.combinedBezoRate = -new Bezos().donutRate;
           break;
         default:
         // do nothing
       }
 
-      
       game.totalOfAllBuildings = -1;
       game.totalRate = -base.donutRate;
       game.donutGame.donuts = base.buildingCost;
@@ -271,6 +269,29 @@ const StoreButtonGroup = ({ type, game }) => {
         }}
       />
       <StoreButton
+        building='Rig'
+        icon={RigImage}
+        type={type}
+        baseBuilding={game.gameState.baseBuildings.rig}
+        buildingTotal={game.totalRigs}
+        isDisabled={
+          (game.donutGame.donuts <
+            game.gameState.baseBuildings.rig.buildingCost &&
+            type !== 'sell') ||
+          (type === 'sell' && game.totalRigs === 0)
+            ? true
+            : false
+        }
+        onClick={() => {
+          buildingHandler(
+            game.gameState.baseBuildings.rig,
+            new Rig(),
+            Rig,
+            'Rig',
+          );
+        }}
+      />
+      <StoreButton
         building='Bank'
         icon={BankImage}
         type={type}
@@ -316,29 +337,7 @@ const StoreButtonGroup = ({ type, game }) => {
           );
         }}
       />
-      <StoreButton
-        building='Rig'
-        icon={RigImage}
-        type={type}
-        baseBuilding={game.gameState.baseBuildings.rig}
-        buildingTotal={game.totalRigs}
-        isDisabled={
-          (game.donutGame.donuts <
-            game.gameState.baseBuildings.rig.buildingCost &&
-            type !== 'sell') ||
-          (type === 'sell' && game.totalRigs === 0)
-            ? true
-            : false
-        }
-        onClick={() => {
-          buildingHandler(
-            game.gameState.baseBuildings.rig,
-            new Rig(),
-            Rig,
-            'Rig',
-          );
-        }}
-      />
+
       <StoreButton
         building='Beezos'
         icon={BeezosImage}

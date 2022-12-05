@@ -62,7 +62,7 @@ const Display = ({ game }) => {
           {game.donutGame.donuts} Donuts
         </Typography>
         <Typography variant='p' align='center' color='white'>
-          per second: {game.totalRate}
+          🍩 per second: {game.totalRate}
         </Typography>
       </Stack>
       <DonutSpin game={game} />;
