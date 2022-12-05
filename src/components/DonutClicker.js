@@ -52,6 +52,9 @@ const state = {
   bezosInfo: {
     totalBezos: 0,
   },
+  totalBuildingInfo: {
+    totalOfAllBuildings: 0,
+  },
 
   baseBuildings: {
     toe: new Toe(),
