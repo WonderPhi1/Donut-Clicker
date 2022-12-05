@@ -1,4 +1,14 @@
-import { Bank, Bezos, Church, Cook, Farm, Grandpa, Rig, Toe, UnpaidIntern } from './Buildings';
+import {
+  Bank,
+  Bezos,
+  Church,
+  Cook,
+  Farm,
+  Grandpa,
+  Rig,
+  Toe,
+  UnpaidIntern,
+} from './Buildings';
 
 export default class BuildingManager {
   constructor(donut, gameState, gameStateController) {
@@ -6,31 +16,31 @@ export default class BuildingManager {
     this._buildings = [];
     this._donutGame = donut;
     this._gameState = gameState;
-    
+
     this._totalToes = gameState.toeInfo.totalToes;
     this._combinedToesRates = gameState.toeInfo.combinedToesRates;
-    
+
     this._totalIntern = gameState.internInfo.totalInterns;
-    this._combinedInternRates = gameState.internInfo.combinedInternRates
-    
+    this._combinedInternRates = gameState.internInfo.combinedInternRates;
+
     this._totalCooks = gameState.cookInfo.totalCooks;
     this._combinedCookRates = gameState.cookInfo.combinedCookRates;
-    
+
     this._totalGrandpas = gameState.grandpaInfo.totalGrandpas;
     this._combinedGrandpaRates = gameState.grandpaInfo.combinedGrandpaRates;
-    
+
     this._totalFarms = gameState.farmInfo.totalFarms;
     this.combinedFarmRates = gameState.farmInfo.combinedFarmRates;
-    
+
     this._totalRigs = gameState.rigInfo.totalRigs;
     this._combinedRigRates = gameState.rigInfo.combinedRigRates;
-    
+
     this._totalBanks = gameState.bankInfo.totalBanks;
-    this._totalBanks = gameState.bankInfo.combinedBankRates;
-    
+    this._combinedBankBanks = gameState.bankInfo.combinedBankRates;
+
     this._totalChurches = gameState.churchInfo.totalChurches;
-    this._combinedChurchRates = gameState.churchInfo.combinedChurchRates
-    
+    this._combinedChurchRates = gameState.churchInfo.combinedChurchRates;
+
     this._totalBezos = gameState.bezosInfo.totalBezos;
     this._combinedBezoRate = gameState.bezosInfo.combinedBezoRate;
 
@@ -103,7 +113,6 @@ export default class BuildingManager {
     return this._combinedRigRates;
   }
 
-
   get totalBanks() {
     return this._totalBanks;
   }
@@ -111,7 +120,6 @@ export default class BuildingManager {
   get combinedBankRates() {
     return this._combinedBankRates;
   }
-
 
   get totalChurches() {
     return this._totalChurches;
@@ -176,7 +184,6 @@ export default class BuildingManager {
         totalInterns: prevState.internInfo.totalInterns + intern,
       },
     }));
-
   }
 
   set combinedInternRates(q) {
@@ -188,7 +195,7 @@ export default class BuildingManager {
       },
     }));
   }
-  
+
   set totalCooks(cook) {
     this._gameController((prevState) => ({
       ...prevState,
@@ -224,7 +231,8 @@ export default class BuildingManager {
       ...prevState,
       grandpaInfo: {
         ...prevState.grandpaInfo,
-        combinedGrandpaRates: prevState.grandpaInfo.combinedGrandpaRates + grandpa,
+        combinedGrandpaRates:
+          prevState.grandpaInfo.combinedGrandpaRates + grandpa,
       },
     }));
   }
@@ -304,7 +312,8 @@ export default class BuildingManager {
       ...prevState,
       churchInfo: {
         ...prevState.churchInfo,
-        combinedChurchRates: prevState.churchInfo.combinedChurchRates + churches,
+        combinedChurchRates:
+          prevState.churchInfo.combinedChurchRates + churches,
       },
     }));
   }
@@ -329,18 +338,16 @@ export default class BuildingManager {
     }));
   }
 
-  
-
   set totalOfAllBuildings(allBuildings) {
     this._gameController((prevState) => ({
       ...prevState,
       totalBuildingInfo: {
         ...prevState.totalBuildingInfo,
-        totalOfAllBuildings: prevState.totalBuildingInfo.totalOfAllBuildings + allBuildings,
+        totalOfAllBuildings:
+          prevState.totalBuildingInfo.totalOfAllBuildings + allBuildings,
       },
     }));
   }
-
 
   calcTotalRate(newBuilding) {
     console.log('Calculating total rate');
@@ -357,38 +364,36 @@ export default class BuildingManager {
 
     if (buildingType === 'Toe') {
       this.totalToes = buildingSum;
-      this.combinedToesRates =+new Toe().donutRate;
+      this.combinedToesRates = +new Toe().donutRate;
     } else if (buildingType === 'Unpaid Intern') {
       this.totalIntern = buildingSum;
-      this.combinedInternRates =+ new UnpaidIntern().donutRate;
-    }else if (buildingType === 'Cook') {
+      this.combinedInternRates = +new UnpaidIntern().donutRate;
+    } else if (buildingType === 'Cook') {
       this.totalCooks = buildingSum;
-      this.combinedCookRates =+ new Cook().donutRate;
-    }else if (buildingType === 'Grandpa') {
+      this.combinedCookRates = +new Cook().donutRate;
+    } else if (buildingType === 'Grandpa') {
       this.totalGrandpas = buildingSum;
-      this.combinedGrandpaRates =+ new Grandpa().donutRate;
-    }else if (buildingType === 'Farm') {
+      this.combinedGrandpaRates = +new Grandpa().donutRate;
+    } else if (buildingType === 'Farm') {
       this.totalFarms = buildingSum;
-      this.combinedFarmRates  =+ new Farm().donutRate;
-    }else if (buildingType === 'Rig') {
+      this.combinedFarmRates = +new Farm().donutRate;
+    } else if (buildingType === 'Rig') {
       this.totalRigs = buildingSum;
-      this.combinedRigRates  =+ new Rig().donutRate;
-    }else if (buildingType === 'Bank') {
+      this.combinedRigRates = +new Rig().donutRate;
+    } else if (buildingType === 'Bank') {
       this.totalBanks = buildingSum;
-      this.combinedBankRates =+ new Bank().donutRate;
-    }else if (buildingType === 'Church') {
+      this.combinedBankRates = +new Bank().donutRate;
+    } else if (buildingType === 'Church') {
       this.totalChurches = buildingSum;
-      this.combinedChurchRates =+ new Church().donutRate;
-    }else if (buildingType === 'Beezos') {
+      this.combinedChurchRates = +new Church().donutRate;
+    } else if (buildingType === 'Beezos') {
       this.totalBezos = buildingSum;
-      this.combinedBezoRate =+ new Bezos().donutRate;
+      this.combinedBezoRate = +new Bezos().donutRate;
     }
 
-    this.totalOfAllBuildings =buildingSum;
+    this.totalOfAllBuildings = buildingSum;
     //console.log(new Toe().donutRate)
   }
-
-  
 
   addBuilding(building, instanceType, buildingType) {
     console.log('Adding new building');

@@ -19,6 +19,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
+        data-testid='app-wrapper'
         sx={{
           backgroundImage: `url(${Background})`,
           backgroundSize: 'cover',

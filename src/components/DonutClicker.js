@@ -22,7 +22,7 @@ import {
 
 const state = {
   donutInfo: {
-    donuts: 1000,
+    donuts: 0,
     rate: 0,
     donutsClicked: 0,
   },
