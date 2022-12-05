@@ -106,6 +106,7 @@ export default class BuildingManager {
   // }
 
   get totalRigs() {
+    
     return this._totalRigs;
   }
 
