@@ -10,6 +10,10 @@ import {
   UnpaidIntern,
 } from './Buildings';
 
+/**
+ * This class is to manage all the buildings in the game. 
+ * That includes when one is purchased or sold, gets the total buildings, and the increase or decrease in the rate.
+ */
 export default class BuildingManager {
   constructor(donut, gameState, gameStateController) {
     this._totalRate = gameState.donutInfo.rate;
@@ -350,12 +354,21 @@ export default class BuildingManager {
     }));
   }
 
+  /**
+   * This function calculates the total rate for the user
+   * @param {*} newBuilding 
+   */
   calcTotalRate(newBuilding) {
     console.log('Calculating total rate');
 
     this.totalRate = newBuilding.donutRate;
   }
 
+  /**
+   * This function calculates the total number of buildings that the user has purchased
+   * @param {type} instanceType 
+   * @param {string} buildingType - Name of the building 
+   */
   calcTotalofNumberOfaBuilding(instanceType, buildingType) {
     console.log('Recalculating building total');
     const targetBuilding = this._buildings.map(
@@ -396,6 +409,12 @@ export default class BuildingManager {
     //console.log(new Toe().donutRate)
   }
 
+  /**
+   * This function will let the user know that the building has been added and the total number of buildings goes up.
+   * @param {string} building - Upgrade
+   * @param {type} instanceType 
+   * @param {string} buildingType - Name of building
+   */
   addBuilding(building, instanceType, buildingType) {
     console.log('Adding new building');
     this._buildings.push(building);

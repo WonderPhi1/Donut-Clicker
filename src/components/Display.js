@@ -3,6 +3,11 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import DonutImage from '../assets/donutImage.png';
 import Background from '../assets/background.jpg';
+/**
+ * This function is to display the donut spinning on the screen.
+ * @param {object} game - Game screen 
+ * @returns The donut spinning on the screen.
+ */
 const DonutSpin = ({ game }) => {
   return (
     <Stack
@@ -40,6 +45,11 @@ const DonutSpin = ({ game }) => {
   );
 };
 
+/**
+ * This function is to display the amount of donuts the user has and how much donuts the user is getting per second.
+ * @param {object} game - Game screen
+ * @returns The amount of donuts the user has and the amount per second.
+ */
 const Display = ({ game }) => {
   const theme = useTheme();
 

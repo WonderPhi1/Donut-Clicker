@@ -2,6 +2,12 @@ import { Box, Typography } from '@mui/material';
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
 
+/**
+ * This function is to display the stats of the user which includes how many donuts they will be getting based on
+ * the building that they have purchased, and also how many buildings they have in total.
+ * @param {object} game - Game screen
+ * @returns The stats of the user
+ */
 function Stats({ game }) {
   const theme = useTheme();
 

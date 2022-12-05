@@ -28,6 +28,18 @@ import {
   UnpaidIntern,
 } from '../classes/Buildings';
 
+/**
+ * This function displays the buy section of the store which includes purchaing a building.
+ * @param {string} building - Upgrade
+ * @param {boolean} isDisabled - Inefficient donuts
+ * @param {img} icon - Image of the upgrades
+ * @param {string} type - To buy/sell buildings
+ * @param {event} onClick - When the user clicks on the buttons
+ * @param {number} baseBuilding - Increases the donut per second based on how much donuts the building produces
+ * @param {number} buildingTotal - Shows the total of each building purchased
+ * @returns The total amount of buildings purchased, shows red if the user does not have enough 
+ * donuts and green if they do have enough, shows the image of each building, and increases the donut per second. 
+ */
 const StoreButton = ({
   building,
   isDisabled,
@@ -93,7 +105,22 @@ const StoreButton = ({
   );
 };
 
+/**
+ * This function displays the sell section of the store which includes selling each building to get donuts back.
+ * @param {string} type - to buy/sell buildings
+ * @param {object} game - Game screen
+ * @returns The total amount of buildings the user has left, shows red if the user cannot sell anymore
+ * and green if there are buildings, and shows the image of each building.
+ */
 const StoreButtonGroup = ({ type, game }) => {
+  /**
+   * This function is to for when the user wants to sell a building 
+   * the value of the total buildings will go down by 1 each time the user clicks on it.
+   * @param {*} base 
+   * @param {string} building - Upgrade
+   * @param {type} instanceType 
+   * @param {string} buildingType - Name of building
+   */
   const buildingHandler = (base, building, instanceType, buildingType) => {
     if (type === 'buy') {
       game.addBuilding(building, instanceType, buildingType);
