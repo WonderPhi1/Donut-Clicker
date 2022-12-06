@@ -3,6 +3,12 @@ import { Tab, Box, Typography, Stack } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import StoreButtonGroup from './StoreButton';
 
+/**
+ * This function displays the store section of this game. It includes a buy and sell option to purchase buildings 
+ * with the right amount of donuts or sell buildings to gain those donuts back.
+ * @param {object} game - Game Screen 
+ * @returns The store
+ */
 const Store = ({ game }) => {
   const [value, setValue] = React.useState('1');
 

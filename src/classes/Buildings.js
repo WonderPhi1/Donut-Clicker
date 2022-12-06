@@ -1,4 +1,7 @@
-export class Buildings {
+/**
+ * This class is the parent class to all the buildings.
+ */
+ export class Buildings {
   constructor() {
     this._donutRate = 0;
     this._buildingCost = 0;
@@ -25,26 +28,39 @@ export class Buildings {
   }
 
   // methods
-  increaseBuildingCost() {
+  /**
+   * This method increases the cost of the building after it has been purchased.
+   */
+   increaseBuildingCost() {
     let newCost =
       this._buildingCost * this._costIncreaseRate + this._buildingCost;
 
     this._buildingCost = Math.round(newCost);
   }
 
-  decreaseBuildingCost() {
+  /**
+   * This method decreases the cost of the building after the user has sold that building.
+   */
+   decreaseBuildingCost() {
     let newCost = (1 - this._costIncreaseRate) * this._buildingCost;
     console.log(newCost);
     this._buildingCost = Math.ceil(newCost);
   }
 
-  applyBuildingBuff() {
+  /**
+   * This method is to increase or decrease the rate based on how many buildings the user has.
+   */
+   applyBuildingBuff() {
     let newRate = this._donutRate * this.buff;
     this._donutRate = Math.round(newRate);
   }
 }
 
-export class Toe extends Buildings {
+/**
+ * This is the child class "Toe" to "Buildings".
+ * It sets the rate to increase by 1, cost is 15 and sets the buff to 1.01.
+ */
+ export class Toe extends Buildings {
   constructor(buildingCost, donutRate, buff) {
     super(buildingCost, donutRate, buff);
     this._donutRate = 1;
@@ -53,7 +69,11 @@ export class Toe extends Buildings {
   }
 }
 
-export class UnpaidIntern extends Buildings {
+/**
+ * This is the child class "UnpaidIntern" to "Buildings".
+ * It sets the rate to increase by 8, cost is 100 and sets the buff to 1.02.
+ */
+ export class UnpaidIntern extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
     this._donutRate = 8;
@@ -62,6 +82,10 @@ export class UnpaidIntern extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Cook" to "Buildings".
+ * It sets the rate to increase by 47, cost is 1100 and sets the buff to 1.04.
+ */
 export class Cook extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -71,6 +95,10 @@ export class Cook extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Grandpa" to "Buildings".
+ * It sets the rate to increase by 260, cost is 12000 and sets the buff to 1.1.
+ */
 export class Grandpa extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -80,6 +108,10 @@ export class Grandpa extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Farm" to "Buildings".
+ * It sets the rate 1400 increase by 47, cost is 130000 and sets the buff to 1.2.
+ */
 export class Farm extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -89,6 +121,10 @@ export class Farm extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Rig" to "Buildings".
+ * It sets the rate to increase by 7800, cost is 1400000 and sets the buff to 1.3.
+ */
 export class Rig extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -98,6 +134,10 @@ export class Rig extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Bank" to "Buildings".
+ * It sets the rate to increase by 44000, cost is 20000000 and sets the buff to 1.5.
+ */
 export class Bank extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -111,6 +151,10 @@ export class Bank extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Church" to "Buildings".
+ * It sets the rate to increase by 260000, and cost is 330000000.
+ */
 export class Church extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);
@@ -119,6 +163,10 @@ export class Church extends Buildings {
   }
 }
 
+/**
+ * This is the child class "Bezos" to "Buildings".
+ * It sets the rate to increase by 1600000, cost is 51000000000 and sets the buff to 2.
+ */
 export class Bezos extends Buildings {
   constructor(donutRate, buildingCost, buff) {
     super(donutRate, buildingCost, buff);

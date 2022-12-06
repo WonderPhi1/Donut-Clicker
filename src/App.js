@@ -3,6 +3,9 @@ import { createTheme } from '@mui/material/styles';
 import DonutClicker from './components/DonutClicker';
 import Background from './assets/background.jpg';
 
+/**
+ * This function creates the theme of the game.
+ */
 const theme = createTheme({
   palette: {
     primary: {
@@ -14,6 +17,10 @@ const theme = createTheme({
   },
 });
 
+/**
+ * This function displays the game screen which includes the theme, donut, and the background
+ * @returns The game screen which includes the theme, donut, and background.
+ */
 const App = () => {
   return (
     <ThemeProvider theme={theme}>

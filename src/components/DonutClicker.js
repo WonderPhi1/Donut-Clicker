@@ -20,6 +20,9 @@ import {
   UnpaidIntern,
 } from '../classes/Buildings';
 
+/**
+ * In this function we are stating that when the game is launched, all the values for donuts and the upgrades are set to 0.
+ */
 const state = {
   donutInfo: {
     donuts: 0,
@@ -79,6 +82,10 @@ const state = {
   },
 };
 
+/**
+ * This function will display the game.
+ * @returns The game screen with everything on it.
+ */
 const DonutClicker = () => {
   // state
   const [gameState, setGameState] = useState(state);
