@@ -21,8 +21,10 @@ function Stats({ game }) {
         opacity: '0.90',
       }}
     >
-      Welcome to Donut Clicker{<br />} -Click the donut to earn donuts{<br />}
-      -Buy buildings when you can afford them {<br />} -Earn more buy more
+      ********Welcome to Donut Clicker{<br />} ********Click the donut to earn
+      donuts{<br />}
+      ********Buy buildings when you can afford them {<br />} ********Earn more
+      buy more
       <Typography> Toe Rate: {game.combinedToesRates} 🍩/sec </Typography>
       <Typography> Interns Rate: {game.combinedInternRates} 🍩/sec</Typography>
       <Typography> Cooks Rate: {game.combinedCookRates} 🍩/sec</Typography>
