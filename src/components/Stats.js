@@ -21,19 +21,21 @@ function Stats({ game }) {
         opacity: '0.90',
       }}
     >
-     Welcome to Donut Clicker
-      
-      <Typography>  Toe Rate: {game.combinedToesRates} 🍩/sec </Typography>
-       <Typography> Interns Rate: {game.combinedInternRates} 🍩/sec</Typography>
-       <Typography> Cooks Rate: {game.combinedCookRates} 🍩/sec</Typography>
-       <Typography> Grandpas Rate: {game.combinedGrandpaRates} 🍩/sec</Typography>
-       <Typography> Farms Rate: {game.combinedFarmRates} 🍩/sec</Typography>
-       <Typography> Rigs Rate: {game.combinedRigRates} 🍩/sec</Typography>
-       <Typography> Banks Rate: {game.combinedBankRates} 🍩/sec</Typography>
-       <Typography> Church Rate: {game.combinedChurchRates} 🍩/sec</Typography>
-       <Typography> Bezos Rate: {game.combinedBezoRate} 🍩/sec</Typography>
-       <Typography> Buildings Owned: {game.totalOfAllBuildings}</Typography>  
-        
+      Welcome to Donut Clicker{<br />} -Click the donut to earn donuts{<br />}
+      -Buy buildings when you can afford them {<br />} -Earn more buy more
+      <Typography> Toe Rate: {game.combinedToesRates} 🍩/sec </Typography>
+      <Typography> Interns Rate: {game.combinedInternRates} 🍩/sec</Typography>
+      <Typography> Cooks Rate: {game.combinedCookRates} 🍩/sec</Typography>
+      <Typography>
+        {' '}
+        Grandpas Rate: {game.combinedGrandpaRates} 🍩/sec
+      </Typography>
+      <Typography> Farms Rate: {game.combinedFarmRates} 🍩/sec</Typography>
+      <Typography> Rigs Rate: {game.combinedRigRates} 🍩/sec</Typography>
+      <Typography> Banks Rate: {game.combinedBankRates} 🍩/sec</Typography>
+      <Typography> Church Rate: {game.combinedChurchRates} 🍩/sec</Typography>
+      <Typography> Bezos Rate: {game.combinedBezoRate} 🍩/sec</Typography>
+      <Typography> Buildings Owned: {game.totalOfAllBuildings}</Typography>
     </Box>
   );
 }
